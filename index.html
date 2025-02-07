@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Will You Be My Valentine?</title>
+    <style>
+        body {
+            text-align: center;
+            background-color: pink;
+            font-family: Arial, sans-serif;
+            overflow: hidden; /* Prevent scrolling */
+        }
+        .container {
+            margin-top: 50px;
+        }
+        h1 {
+            color: red;
+        }
+        .gif-container {
+            margin-top: 20px;
+        }
+        .buttons {
+            margin-top: 20px;
+            position: relative;
+            height: 100px; /* Restricts "No" button movement */
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 18px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+            position: absolute;
+        }
+        .yes-btn {
+            background-color: green;
+            color: white;
+            left: 45%;
+            top: 50%;
+        }
+        .no-btn {
+            background-color: red;
+            color: white;
+            left: 55%;
+            top: 50%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Will You Be My Valentine? 💖</h1>
+        <div class="gif-container">
+            <img src="gif.gif" width="300">
+        </div>
+        <div class="buttons">
+            <button class="yes-btn" onclick="yesClicked()">Yes</button>
+            <button class="no-btn" onmouseover="moveButton()">No</button>
+        </div>
+    </div>
+
+    <script>
+        function yesClicked() {
+            window.location.href = "success.html"; // Redirect to success page
+        }
+
+        function moveButton() {
+            const noBtn = document.querySelector('.no-btn');
+            const btnWidth = noBtn.offsetWidth;
+            const btnHeight = noBtn.offsetHeight;
+            const container = document.querySelector('.buttons');
+
+            const maxX = container.clientWidth - btnWidth; // Keep within buttons area width
+            const maxY = container.clientHeight - btnHeight; // Keep within buttons area height
+
+            const x = Math.max(0, Math.random() * maxX);
+            const y = Math.max(0, Math.random() * maxY);
+
+            noBtn.style.left = `${x}px`;
+            noBtn.style.top = `${y}px`;
+        }
+    </script>
+</body>
+</html>
